@@ -1,0 +1,114 @@
+
+ 
+A linguagem no back-end deve ser Python e o framework deve ser Django (qualquer versão)
+
+A linguagem no front-end deve ser Javascript o framework deve ser Angular (qualquer versão)
+
+O design não será avaliado (pode utilizar qualquer bootstrap/material UI da vida)
+
+
+
+
+Uma Company deve ter:
+
+	nome (string limite de 255 caracteres)
+
+	data de criação (Datetime)
+
+	data da última atualização (Datetime)
+
+	fuso horário (String limite de 50 caracteres)
+
+	linguagem (opções: pt, es ou en)
+
+	usuários convidados
+
+	usuário que criou
+
+	documentos associados
+
+	O nome é obrigatório - OK 
+
+	A data de criação é obrigatória - OK 
+
+	O valor padrão para fuso horário é: “-03:00” - OK
+	
+	O valor padrão para linguagem é “pt” - OK 
+	
+	
+	
+	
+	
+
+Um Doc deve ter:
+
+	nome (string limite de 255 caracteres, obrigatório)
+
+	deletado (boolean, por padrão é False)
+
+	data de criação (Datetime, obrigatório preenchimento pelo usuário)
+
+	data da última atualização (Datetime)
+
+	data limite para assinar (Datetime)
+
+	assinado (boolean, por padrão é False)
+
+	company associada
+
+	usuário que criou o documento
+
+	O nome é obrigatório 
+
+	A campo deletado por padrão é falso 
+
+	A data de criação é obrigatória 
+
+	Toda vez que houver uma atualização em qualquer campo do Doc, o campo data da última atualização deve ser atualizado também
+
+	O campo assinado é falso por padrão
+
+	Na interface deve haver um botão escrito “assinar” que altera o status do campo para verdadeiro
+
+	Caso o status do campo assinado seja verdadeiro o botão deve estar desativado
+
+	Após definido como verdadeiro, o campo assinado deve ser imutável
+	
+	
+	
+	
+	
+	
+
+Um User tem:
+
+	email (string limite de 255 caracteres)
+
+	data da última redefinição de senha (datetime)
+
+	email verificado (boolean)
+
+	senha (string limite de 255 caracteres)
+
+	data de criação (datetime)
+
+	data da última atualização (datetime)
+
+	companhias associadas
+
+	companhia original
+
+	documentos associados
+
+	O email é obrigatório - OK 
+
+	O campo email verificado por padrão é false -  OK
+
+	O campo senha é obrigatório e deve ser maior ou igual a 6 caracteres - OK
+
+	O campo data de criação é obrigatório - OK 
+
+	Toda vez que houver uma atualização em qualquer campo do usuário, o campo data da última atualização deve ser atualizado também - OK
+
+Toda a interface deve estar testada com alguma ferramenta de teste end to end
+Todos os métodos devem estar testados uniteariamente
