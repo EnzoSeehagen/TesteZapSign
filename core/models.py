@@ -17,9 +17,12 @@ class Company(models.Model):
     fuso_horario = models.CharField(max_length=50, default="-03:00")
     linguagem = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, default='pt')
     usuarios_convidados = models.ManyToManyField('User', related_name='companhias_convidadas', blank=True)
-    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='companhias_criadas', blank=True)
+    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='companhias_criadas')
     documentos_associados = models.ManyToManyField('Doc', related_name='companhias_associadas', blank=True)
 
+
+    def __str__(self):
+        return self.nome
 
 
 class Doc(models.Model):
@@ -29,8 +32,8 @@ class Doc(models.Model):
     data_atualizacao = models.DateTimeField(null=True, blank=True)
     data_limite_assinatura = models.DateTimeField(blank=True, null=True)
     assinado = models.BooleanField(default=False)
-    company_associada = models.ForeignKey('Company', on_delete=models.CASCADE, related_name='documentos_associados_doc', blank=True)
-    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='documentos_criados', blank=True)
+    company_associada = models.ForeignKey('Company', on_delete=models.CASCADE, related_name='documentos_associados_doc')
+    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='documentos_criados')
 
     def save(self, *args, **kwargs):
         self.data_atualizacao = timezone.now()
@@ -40,6 +43,11 @@ class Doc(models.Model):
         if not self.assinado:
             self.assinado = True
             self.save()
+
+
+    def __str__(self):
+        return self.nome
+    
 
 
 
@@ -60,4 +68,8 @@ class User(models.Model):
             self.data_criacao = timezone.now()
         self.data_atualizacao = timezone.now()
         super().save(*args, **kwargs)
+
+    
+    def __str__(self):
+        return self.email
 
