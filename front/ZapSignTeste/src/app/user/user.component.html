@@ -1,0 +1,29 @@
+<h2> Usuarios Cadastrados: </h2>
+
+<table >
+
+    <tr>
+        <th>email</th>
+        <th>senha</th>
+        <th>data da última redefinição de senha</th>
+        <th>email verificado?</th>
+        <th>data de criação</th>
+        <th>data de atualização </th>
+        <th>companhias associadas</th>
+        <th>companhia original</th>
+        <th>documentos associados</th>
+    </tr>
+
+    <tr *ngFor="let user of user">
+        <td>{{user.email}}</td>
+        <td>{{user.senha}}</td>
+        <td>{{user.data_ultima_redefinicao_senha}}</td>
+        <td>{{user.email_verificado}}</td>
+        <td>{{user.data_criacao}}</td>
+        <td>{{user.data_atualizacao}}</td>
+        <td>{{user.companhias_associadas}}</td>
+        <td>{{user.companhia_original}}</td>
+        <td>{{user.documentos_associados}}</td>
+    </tr>
+
+</table>
