@@ -1,0 +1,39 @@
+<h2>Cadastrar Companhia</h2>
+
+<form>
+    <p>Nome:<input type="text" name="nome" [(ngModel)]="company.nome"></p>
+    <p>Data de criação:<input type="date" [(ngModel)]="company.data_criacao"></p>
+    <button type="button" (click)="cadastrar()">Cadastrar</button>
+</form>
+
+
+<h2>Companhias Cadastradas</h2>
+
+<table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Data de Criação</th>
+        <th>Data de Atualização</th>
+        <th>Fuso Horário</th>
+        <th>Linguagem</th>
+        <th>Usuários Convidados</th>
+        <th>Usuário Criador</th>
+        <th>Documentos Associados</th>
+      </tr>
+    
+      <tr *ngFor="let company of companies">
+        <td>{{ company.id }}</td>
+        <td>{{ company.nome }}</td>
+        <td>{{ company.data_criacao }}</td>
+        <td>{{ company.data_atualizacao }}</td>
+        <td>{{ company.fuso_horario }}</td>
+        <td>{{ company.linguagem }}</td>
+        <td>{{ company.usuarios_convidados }}</td>
+        <td>{{ company.usuario_criador }}</td>
+        <td>{{ company.documentos_associados }}</td>
+        <td><button (click)="atualizar(company.id)">Atualizar</button></td>
+      <td><button (click)="remover(company.id)">Remover</button></td>
+      </tr>
+  </table>
+  

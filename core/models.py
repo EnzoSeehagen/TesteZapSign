@@ -13,12 +13,14 @@ class Company(models.Model):
 
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
-    data_criacao = models.DateTimeField()
+    data_criacao = models.DateTimeField(default=timezone.now)
+
     data_atualizacao = models.DateTimeField(null=True, blank=True)
     fuso_horario = models.CharField(max_length=50, default="-03:00")
     linguagem = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, default='pt')
     usuarios_convidados = models.ManyToManyField('User', related_name='companhias_convidadas', blank=True)
-    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='companhias_criadas')
+    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='companhias_criadas', blank=True, null=True)
+
     documentos_associados = models.ManyToManyField('Doc', related_name='companhias_associadas', blank=True)
 
 
