@@ -30,14 +30,14 @@ class Company(models.Model):
 
 class Doc(models.Model):
     id = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=255)
+    nome = models.CharField(max_length=255, blank=False)
     deletado = models.BooleanField(default=False)
     data_criacao = models.DateTimeField(blank=False, null=False)
     data_atualizacao = models.DateTimeField(null=True, blank=True)
     data_limite_assinatura = models.DateTimeField(blank=True, null=True)
     assinado = models.BooleanField(default=False)
-    company_associada = models.ForeignKey('Company', on_delete=models.CASCADE, related_name='documentos_associados_doc')
-    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='documentos_criados')
+    company_associada = models.ForeignKey('Company', on_delete=models.CASCADE, related_name='documentos_associados_doc', null=True, blank=True)
+    usuario_criador = models.ForeignKey('User', on_delete=models.CASCADE, related_name='documentos_criados', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.data_atualizacao = timezone.now()
@@ -48,10 +48,8 @@ class Doc(models.Model):
             self.assinado = True
             self.save()
 
-
     def __str__(self):
         return self.nome
-    
 
 
 
