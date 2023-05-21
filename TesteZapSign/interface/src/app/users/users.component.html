@@ -1,0 +1,45 @@
+<hr>
+
+<h2>Cadastrar usuários:</h2>
+
+<form>
+    <p>email:<input type="text" name="name" [(ngModel)]="user.email"></p>
+    <p>senha:<input type="password" name="senha"[(ngModel)]="user.senha"></p>
+    <button type="button" (click)="cadastrar()">Cadastrar</button>
+</form>
+
+<hr>
+
+
+<h2>Usuários Cadastrados</h2>
+<table>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Senha</th>
+      <th>Data de criacao</th>
+      <th>Última redefinicao de senha</th>
+      <th>Email verificado</th>  
+      <th>Data de atualizacao</th>
+      <th>Companhias associadas</th>
+      <th>Companhia original</th>
+      <th>Documentos associados</th>
+      <th>Ações</th>
+    </tr>
+
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.senha }}</td>
+      <td>{{ user.data_criacao }}</td>
+      <td>{{ user.data_ultima_redefinicao_senha }}</td>
+      <td>{{ user.email_verificado }}</td>
+      <td>{{ user.data_atualizacao }}</td>
+      <td>{{ user.companhias_associadas }}</td>
+      <td>{{ user.companhia_original }}</td>
+      <td>{{ user.documentos_associados }}</td>
+      <td><button (click)="atualizar(user.id)">Atualizar</button></td>
+      <td><button (click)="remover(user.id)">Remover</button></td>
+    </tr>
+  </table>
+  

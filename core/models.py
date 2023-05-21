@@ -11,6 +11,7 @@ class Company(models.Model):
         ('en', 'Inglês'),
     )
 
+    id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
     data_criacao = models.DateTimeField()
     data_atualizacao = models.DateTimeField(null=True, blank=True)
@@ -26,6 +27,7 @@ class Company(models.Model):
 
 
 class Doc(models.Model):
+    id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
     deletado = models.BooleanField(default=False)
     data_criacao = models.DateTimeField(blank=False, null=False)
@@ -53,6 +55,7 @@ class Doc(models.Model):
 
 
 class User(models.Model):
+    id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=255)
     data_ultima_redefinicao_senha = models.DateTimeField(null=True, blank=True)
     email_verificado = models.BooleanField(default=False)
