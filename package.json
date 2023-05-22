@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/EnzoSeehagen/TesteZapSign/issues"
   },
-  "homepage": "https://github.com/EnzoSeehagen/TesteZapSign#readme"
+  "homepage": "https://github.com/EnzoSeehagen/TesteZapSign#readme",
+  "devDependencies": {
+    "jasmine": "^5.0.0",
+    "jest": "^29.5.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-jasmine": "^5.1.0"
+  }
 }
