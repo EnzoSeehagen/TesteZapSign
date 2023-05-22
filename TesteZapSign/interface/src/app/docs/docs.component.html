@@ -1,50 +1,56 @@
-<h2>Cadastrar Documento</h2>
-<form>
-  <p>Nome: <input type="text" name="nome" [(ngModel)]="doc.nome"></p>
-  <p>Data de criação: <input type="date" name="data_criacao" [(ngModel)]="doc.data_criacao"></p>
-  <p>Data limite para assinatura: <input type="date" name="data_limite_assinatura" [(ngModel)]="doc.data_limite_assinatura"></p>
+<div class="docs-container">
+  <div class="title-container">
+    <h2 class="title">Cadastrar Documento</h2>
+  </div>
+
+  <div class="form-container">
+    <form class="form">
+      <p>Nome: <input class="content-input" type="text" name="nome" [(ngModel)]="doc.nome"></p>
+      <p>Data de criação: <input class="content-input" type="date" name="data_criacao" [(ngModel)]="doc.data_criacao"></p>
+      <p>Data limite para assinatura:  <input class="content-input"  type="date" name="data_limite_assinatura" [(ngModel)]="doc.data_limite_assinatura"></p>
+      <button class="cadastrar-button" type="button" (click)="cadastrar()">Cadastrar</button>
+    </form>
+  </div>
+
+
+  <div class="table-container">
+    <h2 class="table-title">Documentos Cadastrados</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nome</th>
+          <th>deletado</th>
+          <th>data de criação</th>
+          <th>data de atualização</th>
+          <th>data limite</th>
+          <th>assinado</th>
+          <th>company associada</th>
+          <th>usuário criador</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of docs">
+          <td>{{ doc.id }}</td>
+          <td>{{ doc.nome }}</td>
+          <td>{{ doc.deletado }}</td>
+          <td>{{ doc.data_criacao }}</td>
+          <td>{{ doc.data_atualizacao }}</td>
+          <td>{{ doc.data_limite_assinatura }}</td>
+          <td>{{ doc.assinado }}</td>
+          <td>{{ doc.company_associada }}</td>
+          <td>{{ doc.usuario_criador }}</td>
+          <td>
+            <div class="action-buttons-container">
+              <button class="action-button-sign" (click)="assinar(doc)" [disabled]="doc.assinado">Assinar</button>
+              <button class="action-button-remove"(click)="remover(doc.id)">Remover</button>
+            <button class="action-button-add" (click)="atualizar(doc.id)">Atualizar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   
-
-
-  <button type="button" (click)="cadastrar()">Cadastrar</button>
-</form>
-
-
-
-
-
-<table>
-
-      <tr>
-        <th>id</th>
-        <th>nome</th>
-        <th>deletado</th>
-        <th>data de criação</th>
-        <th>data de atualização</th>
-        <th>data limite para assinatura</th>
-        <th>assinado</th>
-        <th>company associada</th>
-        <th>usuario criador</th>
-      </tr>
-
-   
-      <tr *ngFor="let doc of docs">
-        <td>{{doc.id}}</td>
-        <td>{{doc.nome}}</td>
-        <td>{{doc.deletado}}</td>
-        <td>{{doc.data_criacao }}</td>
-        <td>{{doc.data_atualizacao}}</td>
-        <td>{{doc.data_limite_assinatura}}</td>
-        <td>{{doc.assinado}}</td>
-        <td>{{doc.company_associada}}</td>
-        <td>{{doc.usuario_criador}}</td>
-        <td>
-            <button (click)="assinar(doc)" [disabled]="doc.assinado">Assinar</button>
-        </td>
-        <td><button (click)="atualizar(doc.id)">Atualizar</button></td>
-        <td><button (click)="remover(doc.id)">Remover</button></td>
-
-      </tr>
-
-  </table>
-  
+</div>

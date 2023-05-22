@@ -1,15 +1,20 @@
-<h2>Cadastrar Companhia</h2>
+<div class="companies-container">
+  <div class="title-container">
+    <h2 class="title">Cadastrar Companhia</h2>
+  </div>
 
-<form>
-    <p>Nome:<input type="text" name="nome" [(ngModel)]="company.nome"></p>
-    <p>Data de criação:<input type="date" [(ngModel)]="company.data_criacao"></p>
-    <button type="button" (click)="cadastrar()">Cadastrar</button>
-</form>
+  <div class="form-container">
+    <form class="form">
+      <p>Nome: <input class="content-input" type="text" name="nome" [(ngModel)]="company.nome"></p>
+      <p>Data de criação: <input class="content-input" type="date" [(ngModel)]="company.data_criacao"></p>
+      <button class="cadastrar-button" type="button" (click)="cadastrar()">Cadastrar</button>
+    </form>
+  </div>
 
-
-<h2>Companhias Cadastradas</h2>
-
-<table>
+<div class="table-container">
+  <h2 class="table-title">Companhias Cadastradas</h2>
+  <table class="table">
+    <thead>
       <tr>
         <th>ID</th>
         <th>Nome</th>
@@ -20,8 +25,10 @@
         <th>Usuários Convidados</th>
         <th>Usuário Criador</th>
         <th>Documentos Associados</th>
+        <th>Ações</th>
       </tr>
-    
+    </thead>
+    <tbody>
       <tr *ngFor="let company of companies">
         <td>{{ company.id }}</td>
         <td>{{ company.nome }}</td>
@@ -32,8 +39,16 @@
         <td>{{ company.usuarios_convidados }}</td>
         <td>{{ company.usuario_criador }}</td>
         <td>{{ company.documentos_associados }}</td>
-        <td><button (click)="atualizar(company.id)">Atualizar</button></td>
-        <td><button (click)="remover(company.id)">Remover</button></td>
+        <td>
+          <div class="action-buttons-container">
+            <button class="action-button-remove"(click)="remover(company.id)">Remover</button>
+            <button class="action-button-add" (click)="atualizar(company.id)">Atualizar</button>
+          </div>
+        </td>
       </tr>
+    </tbody>
   </table>
+</div>
+</div>
+
   
