@@ -7,6 +7,7 @@
     <form class="form">
       <p><label>Email:</label> <input class="content-input" type="text" name="email" [(ngModel)]="user.email"></p>
       <p><label>Senha:</label> <input class="content-input" type="password" name="senha" [(ngModel)]="user.senha"></p>
+      <p><label>Data de criação:</label> <input class="content-input" type="date" name="data" [(ngModel)]="user.data_criacao"></p>
       <button class="cadastrar-button" type="button" (click)="cadastrar()">Cadastrar</button>
     </form>
   </div>
