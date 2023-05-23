@@ -64,7 +64,7 @@ class User(models.Model):
     data_ultima_redefinicao_senha = models.DateTimeField(default=timezone.now, blank=True)
     email_verificado = models.BooleanField(default=False)
     senha = models.CharField(max_length=255, validators=[MinLengthValidator(6)])
-    data_criacao = models.DateTimeField(default=timezone.now)
+    data_criacao = models.DateTimeField(default=timezone.now) 
     data_atualizacao = models.DateTimeField(null=True, blank=True)
     companhias_associadas = models.ManyToManyField('Company', related_name='usuarios_associados', blank=True)
     companhia_original = models.ForeignKey('Company', on_delete=models.CASCADE, related_name='usuarios_originais', null=True, blank=True)
