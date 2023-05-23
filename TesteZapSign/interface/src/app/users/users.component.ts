@@ -25,7 +25,7 @@ export class UsersComponent {
 
   atualizar(id: number){
     this.usersService.atualizarUser(id, this.user).subscribe(user => {
-      this.user = new UserModel(); // <--
+      this.user = new UserModel(); 
       this.listarUsuarios();
     }, err => {
       console.log('Erro ao atualizar o usuário', err)
@@ -34,7 +34,7 @@ export class UsersComponent {
   
   remover(id: number){
     this.usersService.removerUser(id).subscribe(user => {
-      this.user = new UserModel(); // <--
+      this.user = new UserModel(); 
       this.listarUsuarios();
     }, err => {
       console.log('Erro ao remover o usuário', err)
@@ -44,7 +44,7 @@ export class UsersComponent {
   cadastrar(){
     console.log(this.user)
     this.usersService.cadastrarUser(this.user).subscribe(user => {
-      this.user = new UserModel(); // <--
+      this.user = new UserModel(); 
       this.listarUsuarios();
     }, err => {
       console.log('Erro ao cadastrar usuário', err)

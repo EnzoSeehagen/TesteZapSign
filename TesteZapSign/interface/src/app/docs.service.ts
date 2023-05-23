@@ -7,24 +7,21 @@ import { DocModel } from './docs/doc.model';
   providedIn: 'root'
 })
 export class DocsService {
-
   constructor(private http: HttpClient) { }
 
-  listarDocs() : Observable<any>{
-    return this.http.get("http://localhost:8000/doc/")
+  listarDocs(): Observable<DocModel[]> {
+    return this.http.get<DocModel[]>("http://localhost:8000/doc/");
   }
 
-  cadastrarDoc(doc: DocModel) : Observable<any> {
-    return this.http.post("http://localhost:8000/doc/", doc);
+  cadastrarDoc(doc: DocModel): Observable<DocModel> {
+    return this.http.post<DocModel>("http://localhost:8000/doc/", doc);
   }
 
-  atualizarDoc(id: any, doc: DocModel) : Observable<any> {
-    return this.http.put("http://localhost:8000/doc/".concat(id) + "/", doc);
-  }
-  
-
-  removerDoc(id: any){
-    return this.http.delete("http://localhost:8000/doc/".concat(id));
+  atualizarDoc(id: any, doc: DocModel): Observable<DocModel> {
+    return this.http.put<DocModel>("http://localhost:8000/doc/" + id + "/", doc);
   }
 
+  removerDoc(id: any): Observable<any> {
+    return this.http.delete("http://localhost:8000/doc/" + id);
+  }
 }
