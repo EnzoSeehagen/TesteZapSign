@@ -23,6 +23,10 @@ class Company(models.Model):
 
     documentos_associados = models.ManyToManyField('Doc', related_name='companhias_associadas', blank=True)
 
+    def save(self, *args, **kwargs):
+        self.data_atualizacao = timezone.now()
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.nome
