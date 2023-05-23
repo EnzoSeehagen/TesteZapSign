@@ -23,7 +23,7 @@ export class CompaniesComponent {
       companies => {
         this.companies = companies;
       }, err => {
-        console.log('Erro ao listar os usuários', err);
+        console.log('Erro ao listar as companhias');
       }
     );
   }
@@ -45,7 +45,7 @@ export class CompaniesComponent {
       this.company = new CompanyModel();
       this.listarCompanhias();
     }, err => {
-      console.log('Erro ao atualizar o usuário', err)
+      console.log('Erro ao atualizar a companhia', err)
 
     })
   } 
