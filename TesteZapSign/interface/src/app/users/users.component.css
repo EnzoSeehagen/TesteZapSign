@@ -26,6 +26,7 @@
 .form {
   display: flex;
   gap: 10px;
+  
 }
 
 .form p {
@@ -42,6 +43,7 @@
   width: 250px;
   border-radius: 8px;
   border: 1px solid #b5b5b5;
+
 }
 
 .cadastrar-button {
@@ -52,6 +54,8 @@
   text-transform: uppercase;
   border-radius: 6px;
   background-color: #5b9f5d;
+  cursor: pointer;
+
 }
 
 .table-container {
@@ -93,6 +97,8 @@ th {
   font-weight: bold;
   height: 22px;
   width: 85px;
+  cursor: pointer;
+
 }
 .action-button-remove {
   margin: 4px 0px 3px 0px;
@@ -103,4 +109,6 @@ th {
   font-weight: bold;
   height: 22px;
   width: 85px;
+  cursor: pointer;
+
 }
