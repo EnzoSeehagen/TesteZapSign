@@ -1,0 +1,163 @@
+{
+  "tests": [
+    {
+      "id": "cadastroUsuarioCamposObrigatoriosPreenchidos",
+      "name": "Cadastro de usuário com campos obrigatórios preenchidos",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Users",
+          "target": "/users",
+          "value": ""
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de email",
+          "target": "name=email",
+          "value": "enzo@gmail.com"
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de senha",
+          "target": "name=senha",
+          "value": "123456"
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de data de criação",
+          "target": "name=data",
+          "value": "2023-05-23"
+        },
+        {
+          "id": "click",
+          "comment": "Clicar no botão Cadastrar",
+          "target": "css=button.cadastrar-button",
+          "value": ""
+        },
+        {
+          "id": "assertTextPresent",
+          "comment": "Verificar se o usuário foi cadastrado com sucesso",
+          "target": "css=td:contains('enzo@gmail.com')",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "cadastroUsuarioCamposObrigatoriosEmBranco",
+      "name": "Cadastro de usuário com campos obrigatórios em branco",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Users",
+          "target": "/users",
+          "value": ""
+        },
+        {
+          "id": "click",
+          "comment": "Clicar no botão Cadastrar",
+          "target": "css=button.cadastrar-button",
+          "value": ""
+        },
+        {
+          "id": "assertTextPresent",
+          "comment": "Verificar se há mensagens de erro exibidas",
+          "target": "css=div.error-message",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "atualizacaoUsuario",
+      "name": "Atualização de usuário",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Users",
+          "target": "/users",
+          "value": ""
+        },
+        {
+          "id": "click",
+          "comment": "Selecionar usuário na tabela",
+          "target": "css=tr:nth-child(1) button.action-button-add",
+          "value": ""
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de email",
+          "target": "name=email",
+          "value": "novoemail@gmail.com"
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de senha",
+          "target": "name=senha",
+          "value": "654321"
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de data de criação",
+          "target": "name=data",
+          "value": "2023-05-24"
+        },
+        {
+          "id": "click",
+          "comment": "Clicar no botão Atualizar",
+          "target": "css=button.action-button-add",
+          "value": ""
+        },
+        {
+          "id": "assertTextPresent",
+          "comment": "Verificar se o usuário foi atualizado com sucesso",
+          "target": "css=td:contains('novoemail@gmail.com')",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "remocaoUsuario",
+      "name": "Remoção de usuário",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Users",
+          "target": "/users",
+          "value": ""
+        },
+        {
+          "id": "click",
+          "comment": "Selecionar usuário na tabela",
+          "target": "css=tr:nth-child(1) button.action-button-remove",
+          "value": ""
+        },
+        {
+          "id": "assertElementNotPresent",
+          "comment": "Verificar se o usuário foi removido com sucesso",
+          "target": "css=td:contains('novoemail@gmail.com')",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "usersComponentTests",
+      "name": "Users Component Tests",
+      "persistSession": "false",
+      "tests": [
+        "cadastroUsuarioCamposObrigatoriosPreenchidos",
+        "cadastroUsuarioCamposObrigatoriosEmBranco",
+        "atualizacaoUsuario",
+        "remocaoUsuario"
+      ]
+    }
+  ],
+  "urls": [
+    {
+      "id": "baseUrl",
+      "url": "http://localhost:4200/"
+    }
+  ],
+  "plugins": []
+}
+

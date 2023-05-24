@@ -1,0 +1,193 @@
+{
+  "tests": [
+    {
+      "id": "listarCompanhias",
+      "name": "Listar Companhias",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Companies",
+          "target": "/companies",
+          "value": ""
+        },
+        {
+          "id": "assertElementPresent",
+          "comment": "Verificar se o título da tabela está presente",
+          "target": "css=.table-title",
+          "value": ""
+        },
+        {
+          "id": "assertElementPresent",
+          "comment": "Verificar se há linhas na tabela",
+          "target": "css=.table tbody tr",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "cadastrarCompany",
+      "name": "Cadastrar Company",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Companies",
+          "target": "/companies",
+          "value": ""
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de nome",
+          "target": "name=nome",
+          "value": "Nova Companhia"
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de data de criação",
+          "target": "name=data_criacao",
+          "value": "2023-05-24"
+        },
+        {
+          "id": "click",
+          "comment": "Clicar no botão Cadastrar",
+          "target": "css=.cadastrar-button",
+          "value": ""
+        },
+        {
+          "id": "assertElementPresent",
+          "comment": "Verificar se a nova companhia foi adicionada à tabela",
+          "target": "css=.table tbody tr:last-child td:nth-child(2)",
+          "value": "Nova Companhia"
+        }
+      ]
+    },
+    {
+      "id": "atualizarCompany",
+      "name": "Atualizar Company",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Companies",
+          "target": "/companies",
+          "value": ""
+        },
+        {
+          "id": "click",
+          "comment": "Selecionar a primeira linha da tabela",
+          "target": "css=.table tbody tr:first-child .action-button-add",
+          "value": ""
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de nome",
+          "target": "name=nome",
+          "value": "Companhia Atualizada"
+        },
+        {
+          "id": "type",
+          "comment": "Preencher campo de data de criação",
+          "target": "name=data_criacao",
+          "value": "2023-05-25"
+        },
+        {
+          "id": "click",
+          "comment": "Clicar no botão Atualizar",
+          "target": "css=.action-button-add",
+          "value": ""
+        },
+        {
+          "id": "assertElementPresent",
+          "comment": "Verificar se a companhia foi atualizada na tabela",
+          "target": "css=.table tbody tr:first-child td:nth-child(2)",
+          "value": "Companhia Atualizada"
+        }
+      ]
+    },
+    {
+      "id": "removerCompany",
+      "name": "Remover Company",
+      "commands": [
+        {
+          "id": "open",
+          "comment": "Abrir a página do componente Companies",
+          "target": "/companies",
+          "value": ""
+        },
+        {
+          "id": "click",
+          "comment": "Selecionar a primeira linha da tabela",
+          "target": "css=.table tbody tr:first-child .action-button-remove",
+          "value": ""
+        },
+        {
+          "id": "storeAttribute",
+          "comment": "Armazenar o ID da companhia",
+          "target": "css=.table tbody tr:first-child td:first-child@data-id",
+          "value": "companyId"
+        },
+        {
+          "id": "storeAttribute",
+          "comment": "Armazenar o nome da companhia",
+          "target": "css=.table tbody tr:first-child td:nth-child(2)@textContent",
+          "value": "companyName"
+        },
+        {
+          "id": "click",
+          "comment": "Clicar no botão Remover",
+          "target": "css=.action-button-remove:first-child",
+          "value": ""
+        },
+        {
+          "id": "storeAlertText",
+          "comment": "Armazenar o texto do alerta de confirmação",
+          "target": "",
+          "value": "confirmationText"
+        },
+        {
+          "id": "assert",
+          "comment": "Verificar o texto do alerta de confirmação",
+          "target": "${confirmationText}",
+          "value": "Are you sure you want to remove this company?"
+        },
+        {
+          "id": "storeAlertText",
+          "comment": "Armazenar o texto do alerta de sucesso",
+          "target": "",
+          "value": "successText"
+        },
+        {
+          "id": "acceptAlert",
+          "comment": "Aceitar o alerta de confirmação",
+          "target": "",
+          "value": ""
+        },
+        {
+          "id": "assertElementNotPresent",
+          "comment": "Verificar se a companhia foi removida da tabela",
+          "target": "css=.table tbody tr[data-id=${companyId}]",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "companiesComponentTests",
+      "name": "Companies Component Tests",
+      "persistSession": "false",
+      "tests": [
+        "listarCompanhias",
+        "cadastrarCompany",
+        "atualizarCompany",
+        "removerCompany"
+      ]
+    }
+  ],
+  "urls": [
+    {
+      "id": "baseUrl",
+      "url": "http://localhost:4200/"
+    }
+  ],
+  "plugins": []
+}
+
